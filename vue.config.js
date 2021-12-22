@@ -68,6 +68,7 @@ module.exports = {
     }
   },
   chainWebpack: (config) => {
+    // config.resolve.symlinks(true) // 修复热更新失效
     // 分析插件
     // config
     //   .plugin("webpack-bundle-analyzer")
@@ -151,7 +152,7 @@ module.exports = {
         publish: [
           {
             provider: 'generic',
-            url: 'localhost:8080/publish'
+            url: 'http://127.0.0.1:8080/publish/'
             // url: process.env.VUE_APP_PUBLISHMINIO
           }
         ]
