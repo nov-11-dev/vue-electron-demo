@@ -147,7 +147,14 @@ module.exports = {
           createDesktopShortcut: true,
           // 创建开始菜单图标
           createStartMenuShortcut: true
-        }
+        },
+        publish: [
+          {
+            provider: 'generic',
+            url: 'localhost:8080/publish'
+            // url: process.env.VUE_APP_PUBLISHMINIO
+          }
+        ]
       },
       chainWebpackMainProcess: (config) => {
         config.plugin('define').tap((args) => {
