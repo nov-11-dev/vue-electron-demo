@@ -30,16 +30,19 @@ autoUpdater.setFeedURL({
   url: 'http://127.0.0.1:8080/publish/',
 })
 autoUpdater.on('update-available', (info) => {
-  console.log(info)
+  console.log('info',  info)
   sendStatusToWindow('autoUpdater-canUpdate', info)
 })
 autoUpdater.on('error', (err) => {
+  console.log('err',  err)
   sendStatusToWindow('autoUpdater-error', err)
 })
 autoUpdater.on('download-progress', (progressObj) => {
+  console.log('info',  progressObj)
   sendStatusToWindow('autoUpdater-progress', progressObj)
 })
 autoUpdater.on('update-downloaded', (info) => {
+  console.log('info',  info)
   sendStatusToWindow('autoUpdater-downloaded')
 })
 // 发起更新程序
@@ -71,6 +74,7 @@ function createWindow() {
   })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
+    console.log('process.env.WEBPACK_DEV_SERVER_URL', process.env.WEBPACK_DEV_SERVER_URL)
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
     if (!process.env.IS_TEST) win.webContents.openDevTools()
@@ -114,6 +118,8 @@ app.on('ready', async () => {
       console.error('Vue Devtools failed to install:', e.toString())
     }
   }
+  // autoUpdater.checkForUpdates()
+
   createWindow()
 
   // 运行APP检测更新。

@@ -93,6 +93,7 @@ module.exports = {
       nodeIntegration: true,
       builderOptions: {
         win: {
+          "artifactName": "${productName}_Setup_${version}.${ext}",
           icon: 'build/electron-icon/icon.ico',
           // 图标路径 windows系统中icon需要256*256的ico格式图片，更换应用图标亦在此处
           target: [

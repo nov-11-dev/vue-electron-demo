@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <!-- <h1>v1</h1> -->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-
+    
     <el-dialog
       title="应用更新......"
       :visible="showUpdater"
@@ -42,10 +41,13 @@ export default {
     if (process.env.IS_ELECTRON) {
       console.log('发现新版本')
       const { ipcRenderer } = require('electron')
+      console.log('ipcRenderer', ipcRenderer)
       // 发现新版本
       ipcRenderer.once('autoUpdater-canUpdate', (event, info) => {
+        console.log(123333)
         console.log('event', event)
         setTimeout(() => {
+          console.log('info', info)
           this.$confirm(`发现有新版本【v${info.version}】，是否更新?`, '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
